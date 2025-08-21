@@ -1,7 +1,7 @@
 import '#db';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import { authRouter } from '#routes';
+import { authRouter, postRouter } from '#routes';
 import { errorHandler, notFoundHandler } from '#middlewares';
 
 const app = express();
@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json(), cookieParser());
 
 app.use('/auth', authRouter);
+app.use('/posts', postRouter);
 
 app.use('*splat', notFoundHandler);
 
